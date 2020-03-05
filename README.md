@@ -11,10 +11,11 @@ It scrapes the first result page and details about each product and its sellers.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| queries | Array of Strings | List of queries to search for |
-| countryCode | String | Country selected from enum (value is ISO-3166 Alpha-2 country code) |
+| queries | (required) Array of Strings | List of queries to search for |
+| countryCode | String | (required) Country selected from enum (value is ISO-3166 Alpha-2 country code) |
 | maxPostCount | Integer | Limit of the results to be scraped per page (0 means no limit) |
-| isAdvancedResults | Array of Strings | Check it if you want more data into your results |
+| isAdvancedResults | Boolean | Check it if you want more data into your results |
+| extendOutputFunction | string | Function that takes a JQuery handle ($) as argument and returns data that will be merged with the default output. More information in [Extend output function](#extend-output-function) |
 
 INPUT Example:
 
