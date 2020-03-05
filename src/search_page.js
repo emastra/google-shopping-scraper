@@ -17,7 +17,13 @@ async function handleSearchPage(params, requestQueue, maxPostCount, isAdvancedRe
 
     // check HTML if page has no results
     if (resultElements.length === 0) {
-        log.warning($.html());
+        log.warning('The page has no results. Check dataset for more info.');
+
+        await Apify.pushData({
+            'noResults': true,
+            '#html': $.html(),
+            '#debug': Apify.utils.createRequestDebugInfo(request),
+        });
     }
 
     // limit the results to be scraped, if maxPostCount exists

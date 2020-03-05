@@ -1,4 +1,4 @@
-//TOTH: 7
+//TOTH: 8
 
 const Apify = require('apify');
 const { log } = Apify.utils;
@@ -43,14 +43,21 @@ Apify.main(async () => {
         requestList,
         requestQueue,
         useApifyProxy: true,
-        // apifyProxyGroups: ['GOOGLE_SERP'],
-        apifyProxyGroups: ['RESIDENTIAL'],
+        apifyProxyGroups: ['GOOGLE_SERP'],
+        // apifyProxyGroups: ['RESIDENTIAL'],
+        useSessionPool: true,
         handlePageFunction: (params) => {
             const { request } = params;
             if (request.userData.type === REQUEST_TYPES.SEARCH_PAGE) return handleSearchPage(params, requestQueue, maxPostCount, isAdvancedResults, evaledFunc);
             return handleProductPage(params, isAdvancedResults, evaledFunc);
         },
-        useSessionPool: true,
+        handleFailedRequestFunction: async ({ request }) => {
+            log.warning(`Request ${request.url} failed too many times`);
+
+            await dataset.pushData({
+                '#debug': Apify.utils.createRequestDebugInfo(request),
+            });
+        },
     });
 
     // Process the queries
