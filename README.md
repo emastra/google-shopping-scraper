@@ -33,8 +33,6 @@ INPUT Example:
 ### Output
 
 Output is stored in a dataset.
-Each item will contain the search term and all values keyed by the corresponding date.
-
 Example of one output item:
 ```
 {
