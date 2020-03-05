@@ -88,7 +88,10 @@ async function handleProductPage({ request, $ }, isAdvancedResults, evaledFunc) 
 
     // grab description
     const descriptionSpan = productElement.find('p.sh-ds__desc span[style="display:none"]');
-    if (descriptionSpan) result.description = descriptionSpan.text().replace('« less', '');
+    if (descriptionSpan) {
+        const desc = descriptionSpan.text();
+        result.description = desc.replace('« less', '');
+    }
 
     // if basic results, re-initialize result object with relevant props
     if (!isAdvancedResults) {
