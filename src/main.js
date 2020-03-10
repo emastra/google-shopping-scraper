@@ -1,5 +1,3 @@
-//TOTH: 8
-
 const Apify = require('apify');
 const { log } = Apify.utils;
 const { checkAndEval } = require('./utils');
@@ -54,7 +52,7 @@ Apify.main(async () => {
         handleFailedRequestFunction: async ({ request }) => {
             log.warning(`Request ${request.url} failed too many times`);
 
-            await dataset.pushData({
+            await Apify.pushData({
                 '#debug': Apify.utils.createRequestDebugInfo(request),
             });
         },
