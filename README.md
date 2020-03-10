@@ -1,9 +1,9 @@
 # Google Shopping Scraper
-Google Shopping Scraper is an [Apify actor](https://apify.com/actors) for extracting data from [Google Shopping](https://www.google.com/shopping) web site.
-It scrapes the first result page and details about each product and its sellers.
+Google Shopping Scraper is an [Apify actor](https://apify.com/actors) for extracting data from [Google Shopping](https://www.google.com/shopping) web site, in any country domain. It scrapes the first result page and details about each product and its sellers. It is build on top of [Apify SDK](https://sdk.apify.com/) and you can run it both on [Apify platform](https://my.apify.com) and locally.
 
 - [Input](#input)
 - [Output](#output)
+- [Expected CU consumption](#expected-cu-consumption)
 - [Extend output function](#extend-output-function)
 - [Open an issue](#open-an-issue)
 
@@ -11,10 +11,10 @@ It scrapes the first result page and details about each product and its sellers.
 
 | Field | Type | Description |
 | ----- | ---- | ----------- |
-| queries | (required) Array of Strings | List of queries to search for |
+| queries | Array of Strings | (required) List of queries to search for |
 | countryCode | String | (required) Country selected from enum (value is ISO-3166 Alpha-2 country code) |
 | maxPostCount | Integer | Limit of the results to be scraped per page (0 means no limit) |
-| isAdvancedResults | Boolean | Check it if you want more data into your results |
+| isAdvancedResults | Boolean | Check this if you want to scrape more data. Your dataset items will have more fields including `merchantName` and `reviews` |
 | extendOutputFunction | string | Function that takes a JQuery handle ($) as argument and returns data that will be merged with the default output. More information in [Extend output function](#extend-output-function) |
 
 INPUT Example:
@@ -75,6 +75,9 @@ The following example will add a new field:
     }
 }
 ```
+
+### Expected CU consumption
+Expected compute units is 0.0272 every 10 products.
 
 ### Open an issue
 If you find any bug, please create an issue on the actor [Github page](https://github.com/emastra/google-shopping-scraper).
