@@ -11,6 +11,7 @@ async function handleSearchPage(params, requestQueue, maxPostCount, isAdvancedRe
     const linkPrefix = `http://${hostname}`;
 
     const results = [];
+
     let resultElements = $('div[class$="list-result"]');
 
     log.info(`Processing "${query}" - found ${resultElements.length} products`);

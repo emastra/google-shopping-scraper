@@ -14,7 +14,7 @@ function countryCodeToGoogleHostname(countryCode) {
 function prepareRequestList(queries, countryCode) {
     const hostname = countryCodeToGoogleHostname(countryCode);
     const sources = queries.map((query) => {
-        const url = `http://${hostname}/search?q=${encodeURIComponent(query)}&tbm=shop`;
+        const url = `http://${hostname}/search?q=${encodeURIComponent(query)}&tbm=shop&tbs=vw:l`;
 
         return new Apify.Request({
             url,
