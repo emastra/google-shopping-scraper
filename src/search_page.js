@@ -21,7 +21,7 @@ async function handleSearchPage(params, requestQueue, maxPostCount, isAdvancedRe
 
         await Apify.pushData({
             'noResults': true,
-            '#html': $.html(),
+            '#body': $('body').html(),
             '#debug': Apify.utils.createRequestDebugInfo(request),
         });
     }
