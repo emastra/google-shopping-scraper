@@ -12,7 +12,7 @@ Google Shopping Scraper is an [Apify actor](https://apify.com/actors) for extrac
 | Field | Type | Description |
 | ----- | ---- | ----------- |
 | queries | Array of Strings | (required) List of queries to search for |
-| countryCode | String | (required) Country selected from enum (value is ISO-3166 Alpha-2 country code) |
+| countryCode | String | (required) Provide the country to search in (choose from the country list when using the editor, provide the country code when using JSON) |
 | maxPostCount | Integer | Limit of the results to be scraped per page (0 means no limit) |
 | isAdvancedResults | Boolean | Check this if you want to scrape more data. Your dataset items will have more fields including `merchantName` and `reviews` |
 | extendOutputFunction | string | Function that takes a JQuery handle ($) as argument and returns data that will be merged with the default output. More information in [Extend output function](#extend-output-function) |
