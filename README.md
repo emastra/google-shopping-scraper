@@ -57,8 +57,8 @@ Example of one output item:
 }
 ```
 
-*Note about price format*
-Different countries has different price formats, currently the actor leaves the price format as it is found on the page.
+**Note about price format**
+- Different countries has different price formats, currently the actor leaves the price format as it is found on the page.
 
 ### Google SERP
 The actor uses Google SERP Proxy to scrape localized results. For more information, check the [documentation](https://docs.apify.com/proxy/google-serp-proxy).
