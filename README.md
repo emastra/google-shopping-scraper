@@ -57,7 +57,7 @@ Example of one output item:
 }
 ```
 
-***Note about price format***
+*Note about price format*
 Different countries has different price formats, currently the actor leaves the price format as it is found on the page.
 
 ### Google SERP
