@@ -36,14 +36,19 @@ Apify.main(async () => {
     let evaledFunc;
     if (extendOutputFunction) evaledFunc = checkAndEval(extendOutputFunction);
 
+    // prepare SERP proxy url
+    const password = process.env.APIFY_PROXY_PASSWORD;
+    const proxyUrl = `http://groups-GOOGLE_SERP:${password}@proxy.apify.com:8000`;
+    // const proxyUrl = `http://auto:${password}@proxy.apify.com:8000`;
+
     // Configure the crawler
     const crawler = new Apify.CheerioCrawler({
         requestList,
         requestQueue,
-        useApifyProxy: true,
-        apifyProxyGroups: ['GOOGLE_SERP'],
+        // useApifyProxy: true,
+        // apifyProxyGroups: ['GOOGLE_SERP'],
         // apifyProxyGroups: ['RESIDENTIAL'],
-        useSessionPool: true,
+        proxyUrls: [ proxyUrl ],
         handlePageFunction: (params) => {
             const { request } = params;
             if (request.userData.type === REQUEST_TYPES.SEARCH_PAGE) return handleSearchPage(params, requestQueue, maxPostCount, isAdvancedResults, evaledFunc);

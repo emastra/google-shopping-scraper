@@ -3,6 +3,7 @@ Google Shopping Scraper is an [Apify actor](https://apify.com/actors) for extrac
 
 - [Input](#input)
 - [Output](#output)
+- [Google SERP](#google-serp)
 - [Expected CU consumption](#expected-cu-consumption)
 - [Extend output function](#extend-output-function)
 - [Open an issue](#open-an-issue)
@@ -13,7 +14,7 @@ Google Shopping Scraper is an [Apify actor](https://apify.com/actors) for extrac
 | ----- | ---- | ----------- |
 | queries | Array of Strings | (required) List of queries to search for |
 | countryCode | String | (required) Provide the country to search in (choose from the country list when using the editor, provide the country code when using JSON) |
-| maxPostCount | Integer | Limit of the results to be scraped per page (0 means no limit) |
+| maxPostCount | Integer | Limit of the results to be scraped per page, 0 means no limit. Currently the actor scrapes only the 1st page (20 results) |
 | isAdvancedResults | Boolean | Check this if you want to scrape more data. Your dataset items will have more fields including `merchantName` and `reviews` |
 | extendOutputFunction | string | Function that takes a JQuery handle ($) as argument and returns data that will be merged with the default output. More information in [Extend output function](#extend-output-function) |
 
@@ -46,15 +47,21 @@ Example of one output item:
       "merchant": "eBay",
       "merchantMetrics": "0",
       "details": "· Free shipping",
-      "price": "$1650.00",
-      "totalPrice": "$1796.44",
+      "price": "$1,650.00",
+      "totalPrice": "$1,796.44",
       "additionalPrice": ""
     }
   ],
-  "price": "$1979.10",
+  "price": "$1,979.10",
   "merchantLink": "http://www.google.com/aclk?sa=l&ai=DChcSEwjp_vSpooPoAhUMlLMKHR6ODhsYABBGGgJxbg&sig=AOD64_3BSHnJWpFXjeoJyysFuEev97t7Ew&ctype=5&q=&ved=0ahUKEwjFo_GpooPoAhV0mHIEHfKkDGAQg-UECOIG&adurl="
 }
 ```
+
+**Note about price format**
+Different countries has different price formats, currently the actor leaves the price format as it is found on the page.
+
+### Google SERP
+The actor uses Google SERP Proxy to scrape localized results. For more information, check the [documentation](https://docs.apify.com/proxy/google-serp-proxy).
 
 ### Extend output function
 

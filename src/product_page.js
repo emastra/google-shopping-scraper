@@ -12,9 +12,9 @@ function getSellers(productElement, $, linkPrefix) {
     sellerRows.each(function () {
         const row = $(this);
 
-        const price = row.find('td:nth-child(3)').text().trim().replace(',', '');
-        const additionalPrice = row.find('.sh-osd__content table tbody tr:nth-child(2) td:first-child').text().trim().replace(',', '');
-        let totalPrice = row.find('.sh-osd__total-price').text().trim().replace(',', '');
+        const price = row.find('td:nth-child(3)').text().trim();
+        const additionalPrice = row.find('.sh-osd__content table tbody tr:nth-child(2) td:first-child').text().trim();
+        let totalPrice = row.find('.sh-osd__total-price').text().trim();
         if (!totalPrice) totalPrice = price;
         const ratingDiv = row.find('.sh-osd__merchant-info-container > div');
         let rating = '';
