@@ -1,3 +1,6 @@
+const Apify = require('apify');
+const { log } = Apify.utils;
+
 function checkAndEval(extendOutputFunction) {
     let evaledFunc;
 

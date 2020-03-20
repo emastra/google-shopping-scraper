@@ -45,10 +45,10 @@ Apify.main(async () => {
     const crawler = new Apify.CheerioCrawler({
         requestList,
         requestQueue,
-        // useApifyProxy: true,
+        useApifyProxy: true,
         // apifyProxyGroups: ['GOOGLE_SERP'],
-        // apifyProxyGroups: ['RESIDENTIAL'],
-        proxyUrls: [ proxyUrl ],
+        apifyProxyGroups: ['RESIDENTIAL'],
+        // proxyUrls: [ proxyUrl ],
         handlePageFunction: (params) => {
             const { request } = params;
             if (request.userData.type === REQUEST_TYPES.SEARCH_PAGE) return handleSearchPage(params, requestQueue, maxPostCount, isAdvancedResults, evaledFunc);

@@ -53,7 +53,7 @@ async function handleSearchPage(params, requestQueue, maxPostCount, isAdvancedRe
         if (titleElement.length) productName = titleElement.text().trim();
 
         let price = '';
-        if (priceElement.length) price = priceElement.text().trim().replace(',', '');
+        if (priceElement.length) price = priceElement.text().trim();
 
         let description = '';
 
